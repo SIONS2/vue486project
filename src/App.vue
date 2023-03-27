@@ -39,7 +39,7 @@ const show = ref(true)
         <!--상단 네비게이션 영역-->
         <div class="DiaryHome">
           <nav class="bookmark">
-            <div @click="show = !show" class="bookmarkArea"><font-awesome-icon :icon="['fass', 'bookmark']" /></div>
+            <div @click="show = !show" class="bookmarkArea"><font-awesome-icon :icon="['fas', 'bookmark']" /></div>
             <ul v-if="!show" class="bookmarkNav">
               <li><a @click="show = !show" href="#./route/DiaryLogin" class="navBar">Login</a></li>
               <li><a @click="show = !show" href="#/" class="navBar">Main</a></li>
