@@ -2,7 +2,7 @@
 import Modal from '../modals/LoginModal.vue'
 import { ref } from 'vue'
 
-const showModal = ref(false)
+const showModal = ref(true)
 console.log(showModal)
 </script>
 

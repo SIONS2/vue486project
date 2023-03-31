@@ -108,7 +108,7 @@ const show = ref(true)
   position:absolute;
   top:0;
   right:0;
-  z-index:2;
+  z-index:3;
 }
 .bookmark svg.svg-inline--fa.fa-bookmark {
   font-size: 80px;
@@ -121,7 +121,7 @@ const show = ref(true)
 .bookmarkNav {
     width: 100%;
     position:absolute;
-    z-index:1;
+    z-index:2;
     top:10px;
     left:0;
     transition:0.5s;

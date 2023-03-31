@@ -9,11 +9,12 @@ import { setupCalendar, Calendar, DatePicker } from 'v-calendar';
 library.add(fas, faUserSecret)
 
 const app = createApp(App);
-
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.component('VCalendar', Calendar);
 app.component('VDatePicker', DatePicker);
 
+app.mount('#app');
+
 setupCalendar(app, {});
 
-app.mount('#app');
+

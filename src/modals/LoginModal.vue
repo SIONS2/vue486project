@@ -1,18 +1,23 @@
-<script setup>
-import { defineProps } from 'vue'
-const props = defineProps({
-  show: {
-    Type: Boolean,
-    default : false
-  }
-})
-
-</script>
 <template>
-    <Transition name="modal">
-    <div v-if="props.show" class="modal-mask">
+  <Transition name="modal">
+    <div v-if="show" class="modal-mask">
       <div class="modal-container">
-        
+        <draggable
+          :list="list"
+          :disabled="!enabled"
+          item-key="name"
+          class="list-group"
+          ghost-class="ghost"
+          :move="checkMove"
+          @start="dragging = true"
+          @end="dragging = false"
+        >
+          <template #item="{ element }">
+            <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
+              {{ element.name }}
+            </div>
+          </template>
+        </draggable>
         <button
           class="modal-default-button"
           @click="$emit('close')"
@@ -21,6 +26,52 @@ const props = defineProps({
     </div>
   </Transition>
 </template>
+
+<script>
+import draggable from 'vuedraggable';
+let id = 1;
+
+export default {
+  name: 'SimpleName',
+  components: {
+    draggable,
+  },
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      enabled: true,
+      list: [
+        { name: 'John', id: 0 },
+        { name: 'Joao', id: 1 },
+        { name: 'Jean', id: 2 },
+      ],
+      dragging: false,
+    };
+  },
+  computed: {
+    draggingInfo() {
+      return this.dragging ? 'under drag' : '';
+    },
+  },
+  methods: {
+    add() {
+      this.list.push({ name: 'Juan ' + id, id: id++ });
+    },
+    replace() {
+      this.list = [{ name: 'Edgard', id: id++ }];
+    },
+    checkMove(e) {
+      window.console.log('Future index: ' + e.draggedContext.futureIndex);
+    },
+  },
+}
+</script>
+
 <style scoped>
 .modal-mask {
   position: fixed;
@@ -59,15 +110,5 @@ const props = defineProps({
 
 .modal-enter-from {
   opacity: 0;
-}
-
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .modal-container,
-.modal-leave-to .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 </style>
