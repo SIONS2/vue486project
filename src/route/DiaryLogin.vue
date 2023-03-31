@@ -2,22 +2,29 @@
 import Modal from '../modals/LoginModal.vue'
 import { ref } from 'vue'
 
-const showModal = ref(true)
+const showModal = ref(false)
 console.log(showModal)
 </script>
 
 <template>
   <div class="DiaryLogin">
-    <div id="show-modal" class="lock" @click="showModal = true"><font-awesome-icon :icon="['fas', 'lock']" /></div>
-    <Teleport to="body">
-        <!-- use the modal component, pass in the prop -->
-        <modal :show="showModal" @close="showModal = false">
-            <template #header>
-                <h3>custom header</h3>
-            </template>       
-        </modal>
-    </Teleport>
-
+    <!-- <div id="show-modal" class="lock" @click="showModal = true"><font-awesome-icon :icon="['fas', 'lock']" /></div> -->
+    <div class="diaryLockWrap">
+        <div class="diaryLock" id="show-modal" @click="showModal = true">
+            <ul class="dialNum">
+                <li class="dragWrap">0</li>    
+                <li class="dragWrap">0</li>
+                <li class="dragWrap">0</li>
+            </ul>
+            <Teleport to="body">
+                <modal :show="showModal" @close="showModal = false">
+                    <template #header>
+                        <h3>custom header</h3>
+                    </template>       
+                </modal>
+            </Teleport>
+        </div>
+    </div>
     <div class="DiaryTitle">
         486Diary
     </div>
@@ -39,14 +46,39 @@ console.log(showModal)
     width: 100%;
     height: 100%;
 }
-.lock {
+/*다이어리 잠금 표시 영역*/
+.diaryLockWrap{
     position: absolute;
-    top: 47%;
-    right: -5%;
-    font-size: 50px;
-    color: #D6D0BC;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-inner-bg);
+    width: 40%;
+    height: 60px;
+    border-top-left-radius: var(--radius-lock);
+    border-bottom-left-radius: var(--radius-lock);
+}
+.diaryLock {
+    width: 70%;
+    height: 100%;
+    background-color: var(--radius-lock);
     cursor: pointer;
 }
+.dialNum {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.dragWrap {
+    font-size: 35px;
+    font-weight: bold;
+    width: 33.3333%;
+    text-align: center;
+}
+/*다이어리 표지*/
 .DiaryTitle{
     width: 50%;
     height: 10%;

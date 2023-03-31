@@ -137,6 +137,7 @@ const show = ref(true)
     padding-left: 10px;
     box-sizing: border-box;
     color:#6F3806;
+    letter-spacing: 3px;
 }
 .bookmarkNav >li:not(:last-child) {
     border-bottom: 2px solid #8b6172;

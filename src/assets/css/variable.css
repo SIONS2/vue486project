@@ -1,8 +1,12 @@
 /*global*/
 :root{
+    /* 색상 */
     /* --color-bg:#B3897D; */
     --color-bg:#3e1d14;
     --color-inner-bg:#FFFCF3;
     --color-bookmarg:#b7865b;
     --color-white:#fff;
+
+    /*border-radius값*/
+    --radius-lock:25%;
 }

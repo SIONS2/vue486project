@@ -1,38 +1,9 @@
-<template>
-  <Transition name="modal">
-    <div v-if="show" class="modal-mask">
-      <div class="modal-container">
-        <draggable
-          :list="list"
-          :disabled="!enabled"
-          item-key="name"
-          class="list-group"
-          ghost-class="ghost"
-          :move="checkMove"
-          @start="dragging = true"
-          @end="dragging = false"
-        >
-          <template #item="{ element }">
-            <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
-              {{ element.name }}
-            </div>
-          </template>
-        </draggable>
-        <button
-          class="modal-default-button"
-          @click="$emit('close')"
-        >OK</button>
-      </div>
-    </div>
-  </Transition>
-</template>
-
 <script>
 import draggable from 'vuedraggable';
 let id = 1;
 
 export default {
-  name: 'SimpleName',
+  name: 'DialNum',
   components: {
     draggable,
   },
@@ -45,10 +16,53 @@ export default {
   data() {
     return {
       enabled: true,
-      list: [
-        { name: 'John', id: 0 },
-        { name: 'Joao', id: 1 },
-        { name: 'Jean', id: 2 },
+      list1: [
+        { name: '5', id: 5 },
+        { name: '6', id: 6 },
+        { name: '7', id: 7 },
+        { name: '8', id: 8 },
+        { name: '9', id: 9 },
+        { name: '0', id: 0 },
+        { name: '1', id: 1 },
+        { name: '2', id: 2 },
+        { name: '3', id: 3 },
+        { name: '4', id: 4 },        
+      ],
+      list2: [
+      { name: '5', id: 5 },
+        { name: '6', id: 6 },
+        { name: '7', id: 7 },
+        { name: '8', id: 8 },
+        { name: '9', id: 9 },
+        { name: '0', id: 0 },
+        { name: '1', id: 1 },
+        { name: '2', id: 2 },
+        { name: '3', id: 3 },
+        { name: '4', id: 4 }, 
+      ],
+      list3: [
+      { name: '5', id: 5 },
+        { name: '6', id: 6 },
+        { name: '7', id: 7 },
+        { name: '8', id: 8 },
+        { name: '9', id: 9 },
+        { name: '0', id: 0 },
+        { name: '1', id: 1 },
+        { name: '2', id: 2 },
+        { name: '3', id: 3 },
+        { name: '4', id: 4 }, 
+      ],
+      list4: [
+      { name: '5', id: 5 },
+        { name: '6', id: 6 },
+        { name: '7', id: 7 },
+        { name: '8', id: 8 },
+        { name: '9', id: 9 },
+        { name: '0', id: 0 },
+        { name: '1', id: 1 },
+        { name: '2', id: 2 },
+        { name: '3', id: 3 },
+        { name: '4', id: 4 }, 
       ],
       dragging: false,
     };
@@ -56,14 +70,12 @@ export default {
   computed: {
     draggingInfo() {
       return this.dragging ? 'under drag' : '';
-    },
+    },  
   },
-  methods: {
-    add() {
-      this.list.push({ name: 'Juan ' + id, id: id++ });
-    },
+  methods: {   
     replace() {
       this.list = [{ name: 'Edgard', id: id++ }];
+      this.list2 = [{ name: 'Edgard', id: id++ }];
     },
     checkMove(e) {
       window.console.log('Future index: ' + e.draggedContext.futureIndex);
@@ -71,6 +83,95 @@ export default {
   },
 }
 </script>
+
+<template>
+  <Transition name="modal">
+    <div v-if="show" class="modal-mask">
+      <div class="modal-container">
+        <div class="dragWrap">
+          <draggable
+            :list="list1"
+            :disabled="!enabled"
+            item-key="name"
+            class="list-group"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <template #item="{ element }">
+              <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
+                {{ element.name }}
+              </div>
+            </template>
+          </draggable>
+        </div>
+        
+        <div class="dragWrap">
+          <draggable
+            :list="list2"
+            :disabled="!enabled"
+            item-key="name"
+            class="list-group"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <template #item="{ element }">
+              <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
+                {{ element.name }}
+              </div>
+            </template>
+          </draggable>
+        </div>
+        
+        <div class="dragWrap">
+          <draggable
+            :list="list3"
+            :disabled="!enabled"
+            item-key="name"
+            class="list-group"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <template #item="{ element }">
+              <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
+                {{ element.name }}
+              </div>
+            </template>
+          </draggable>
+        </div>
+        
+        <div class="dragWrap">
+          <draggable
+            :list="list4"
+            :disabled="!enabled"
+            item-key="name"
+            class="list-group"
+            ghost-class="ghost"
+            :move="checkMove"
+            @start="dragging = true"
+            @end="dragging = false"
+          >
+            <template #item="{ element }">
+              <div class="list-group-item" :class="{ 'not-draggable': !enabled }">
+                {{ element.name }}
+              </div>
+            </template>
+          </draggable>
+        </div>
+        
+        <!-- <button
+          class="modal-default-button"
+          @click="$emit('close')"
+        >OK</button> -->
+      </div>
+    </div>
+  </Transition>
+</template>
 
 <style scoped>
 .modal-mask {
@@ -86,29 +187,34 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  width: 320px;
+  height: 80px;
   margin: auto;
-  padding: 20px 30px;
-  background-color: #fff;
+  background-color: #e1d9cd;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  justify-content: space-between;
 }
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
+.dragWrap {
+  width: 23%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  justify-content: center;
+  background-color: #663400;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #fff;
 }
-
-.modal-body {
-  margin: 20px 0;
-}
-
 .modal-default-button {
   float: right;
 }
 
-.modal-enter-from {
-  opacity: 0;
-}
 </style>
