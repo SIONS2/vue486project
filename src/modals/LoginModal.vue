@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       enabled: true,
-      list1: [
+      dial1: [
         { name: '5', id: 5 },
         { name: '6', id: 6 },
         { name: '7', id: 7 },
@@ -28,7 +28,7 @@ export default {
         { name: '3', id: 3 },
         { name: '4', id: 4 },        
       ],
-      list2: [
+      dial2: [
       { name: '5', id: 5 },
         { name: '6', id: 6 },
         { name: '7', id: 7 },
@@ -40,7 +40,7 @@ export default {
         { name: '3', id: 3 },
         { name: '4', id: 4 }, 
       ],
-      list3: [
+      dial3: [
       { name: '5', id: 5 },
         { name: '6', id: 6 },
         { name: '7', id: 7 },
@@ -52,7 +52,7 @@ export default {
         { name: '3', id: 3 },
         { name: '4', id: 4 }, 
       ],
-      list4: [
+      dial4: [
       { name: '5', id: 5 },
         { name: '6', id: 6 },
         { name: '7', id: 7 },
@@ -75,7 +75,7 @@ export default {
   methods: {   
     replace() {
       this.list = [{ name: 'Edgard', id: id++ }];
-      this.list2 = [{ name: 'Edgard', id: id++ }];
+      this.dial2 = [{ name: 'Edgard', id: id++ }];
     },
     checkMove(e) {
       window.console.log('Future index: ' + e.draggedContext.futureIndex);
@@ -86,11 +86,11 @@ export default {
 
 <template>
   <Transition name="modal">
-    <div v-if="show" class="modal-mask">
+    <div v-if="show" @click="$emit('close')" class="modal-mask">
       <div class="modal-container">
         <div class="dragWrap">
           <draggable
-            :list="list1"
+            :list="dial1"
             :disabled="!enabled"
             item-key="name"
             class="list-group"
@@ -109,7 +109,7 @@ export default {
         
         <div class="dragWrap">
           <draggable
-            :list="list2"
+            :list="dial2"
             :disabled="!enabled"
             item-key="name"
             class="list-group"
@@ -128,7 +128,7 @@ export default {
         
         <div class="dragWrap">
           <draggable
-            :list="list3"
+            :list="dial3"
             :disabled="!enabled"
             item-key="name"
             class="list-group"
@@ -147,7 +147,7 @@ export default {
         
         <div class="dragWrap">
           <draggable
-            :list="list4"
+            :list="dial4"
             :disabled="!enabled"
             item-key="name"
             class="list-group"

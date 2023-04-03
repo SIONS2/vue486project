@@ -128,7 +128,7 @@ const show = ref(true)
 }
 .bookmarkNav >li {
     width: 100%;
-    background-color: #CCA7A7;
+    background-color: var(--color-bookmark-menu);
     height: 3rem;
     font-size: 27px;
     font-weight: bold;
@@ -136,14 +136,14 @@ const show = ref(true)
     align-items: center;
     padding-left: 10px;
     box-sizing: border-box;
-    color:#6F3806;
+    color:#FCF1CA;
     letter-spacing: 3px;
 }
 .bookmarkNav >li:not(:last-child) {
-    border-bottom: 2px solid #8b6172;
+  border-bottom: 2px solid #608373;
 }
 .bookmarkNav >li:hover{
-  background-color:#e5d1cc
+  background-color:#608373
 }
 .navBar{
   display:flex;
