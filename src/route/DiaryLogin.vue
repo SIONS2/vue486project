@@ -119,6 +119,11 @@ img{
     height: fit-content;
     position: relative;
     top: -2px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+	-moz-user-select: none;     /* Firefox all */
+	-ms-user-select: none;
+	transition: box-shadow .45s linear, color .25s linear;
+	-webkit-transition: box-shadow .45s linear, color .25s linear;
 }
 .modal-mask .list-group-item {
     width: 100%;
@@ -130,6 +135,14 @@ img{
     margin-top: 0px;
     text-shadow: 0px 2px 0px #3e2204;
 }
+/* .modal-mask .list-group-item:active{
+    color:transparent !important;
+    text-shadow: 0 0 transparent !important;
+}
+.modal-mask .list-group-item::selection{
+    color:transparent !important;
+    text-shadow: 0 0 transparent !important;
+} */
 /*다이어리 표지*/
 .DiaryTitle{
     width: 50%;
